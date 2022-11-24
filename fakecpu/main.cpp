@@ -1,14 +1,15 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
-
+#include "execute.cpp"
 
 using namespace std;
 
-string hello = "prt,hello";
+string hello = "prt,hello\\,";
 string curop;
 string opcode;
-void parser(){
+
+int main(){
     for(int i = 0; i < hello.length(); i++){
         
         if(hello[i] != ','){
@@ -16,16 +17,8 @@ void parser(){
         }
         if(hello[i] == ','){
             execute(curop);
+            curop = "";
         }
     }
-}
-
-void execute(string command){
-    for(int i = 0; i < 3; i++){
-        
-    }
-}
-
-int main(){
-    parser();
+    
 }
