@@ -6,10 +6,12 @@ list of implemented opcodes:
 prt /print text
 crm /clears memory
 &   /set opmode to blank(default)
+add /add 2 1 digit numbers
+
 wip opcodes:
 acm /assign a value to a specific address in memory, ex acm,15(address), 1(value to assign)
-str /set print mode to string
-add /add 2 1 digit numbers
+prm / print a specific memory address
+
 
 unimplemented opcodes:
 sub /substract 2 numbers
@@ -21,7 +23,6 @@ del /clear a variable
 if  /self explanatory
 inc /add 1 to a variable
 dec /substract 1 to a variable
-prm / print a specific memory address
 _____________________________________________________________
 list of features to implement:
 memory 
@@ -40,7 +41,7 @@ prt,hello\\,prt,h\\,prt,why,prt,not
 
 using namespace std;
 
-string program = "add,23,prt,/,&";
+string program = "acm,35443,&,&";
 string curop;
 string opcode;
 

@@ -8,6 +8,7 @@ print   // print the "command"
 add     // add 2 next "commands"(not implemented)
 mema    // assign memory
 memd    // delete memory 
+memr    // read memory
 ____________________________________________________
 default opmode is "read"
 */
@@ -25,7 +26,15 @@ char addnum2;
 int addstep = 1;
 int result;
 char memory[24000];
-int mempointer = 0;
+char mempointer1 = 0;
+char mempointer2 = 0;
+char mempointer3 = 0;
+char mempointer4 = 0;
+char mempointer5 = 0;
+
+int mempointerint;
+int memwstep = 1;
+
 void execute(string command){
     
     if(opmode == " "){
@@ -34,11 +43,11 @@ void execute(string command){
                 memory[i] = 1;
             }
         }
-        if(command == "prm"){
+        /*if(command == "prm"){
             for(int i = 0; i < 24000; i++){
                 cout << memory[i] + 0;
             }
-        }
+        }*/
         if(command == "prt"){        // print opcode
             opmode = "print";
             command = "";
@@ -61,8 +70,14 @@ void execute(string command){
         return;
     }       
 
-    if(command =="acm"){
+    /*if(command =="acm"){
         opmode = "mema";
+        command = "";
+        return;
+    }*/
+
+    if(command == "acm"){
+        opmode = "memw";
         command = "";
         return;
     }
@@ -87,12 +102,30 @@ void execute(string command){
     if(opmode == "add"){
         addnum1 = command.front();
         addnum2 = command.back();
-        int addint1 = (int)addnum1 + 0;
-        cout << addint1 << "\n";
-        int addint2 = (int)addnum2;
+
+        int addint1 = (int)addnum1 - 48; //adds 48 in convertion for some reason        
+        int addint2 = (int)addnum2 - 48;
+
         result = addint1 + addint2;
         opmode = " ";
         cout << result;
 
+    }
+    if(opmode == "memw"){
+        if(memwstep == 1){
+            mempointer1 = command[0];
+            mempointer2 = command[1];
+            mempointer3 = command[2];
+            mempointer4 = command[3];
+            mempointer5 = command[4];
+            cout << mempointer1 << "\n";
+            cout << mempointer2 << "\n";
+            cout << mempointer3 << "\n";
+            cout << mempointer4 << "\n";
+            cout << mempointer5 << "\n";
+            //mempointerint = stoi(command);
+            return;
+            opmode = " ";
+        }
     }
 }
