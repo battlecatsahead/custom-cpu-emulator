@@ -2,7 +2,7 @@
 TODO: 
 create memory management
 
-opmdes:
+opmodes:
 read    // reads commands
 print   // print the "command"
 add     // add 2 next "commands"(not implemented)
@@ -18,43 +18,81 @@ default opmode is "read"
 
 using namespace std;
 
-string opmode = "read";
-int addnum1;
-int addnum2;
+string opmode = " ";
+string prtmode;
+char addnum1;
+char addnum2;
 int addstep = 1;
 int result;
 char memory[24000];
-
+int mempointer = 0;
 void execute(string command){
     
-
-    
-    
-    if(command == "prt"){        // print opcode
-        opmode = "print";
-        command = "";
-        return;
+    if(opmode == " "){
+        if(command == "as1"){
+            for(int i = 0; i < 24000; i++){
+                memory[i] = 1;
+            }
+        }
+        if(command == "prm"){
+            for(int i = 0; i < 24000; i++){
+                cout << memory[i] + 0;
+            }
+        }
+        if(command == "prt"){        // print opcode
+            opmode = "print";
+            command = "";
+            return;
+        }
+        if(command == "crm"){
+            for(int i = 0; i < 24000; i++){
+                memory[i] = ' ';
+            }
+            return;
+        }
+        if(command == "&"){
+            opmode = " ";
+            return;
+        }
     }
-    
     if(command == "add"){        // add opcode
         opmode = "add";
         command = "";
         return;
     }       
 
-    
+    if(command =="acm"){
+        opmode = "mema";
+        command = "";
+        return;
+    }
+
+    if(opmode == "mema"){
+        cout << "mema work";
+    }
+
     if(opmode == "print"){          //print opcode function
-        if(command.back() == '\\'){
+        if(command.back() == '/'){
             command.pop_back();
             cout << command << "\n";
+            opmode = " ";
         }
-        else if(command.back() != '\\'){
+        else if(command.back() != '/'){
             cout << command;
-        }
-    }
-    if(opmode == "add"){
-        cout << "test";
+            opmode = " ";
 
         }
-    
+    }
+
+    if(opmode == "add"){
+        addnum1 = command.front();
+        addnum2 = command.back();
+        int addint1 = (int)addnum1 + 0;
+        cout << addint1 << "\n";
+        int addint2 = (int)addnum2;
+        result = addint1 + addint2;
+        opmode = " ";
+        cout << result;
+
+    }
 }

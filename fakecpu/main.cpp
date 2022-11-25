@@ -5,12 +5,13 @@ _____________________________________________________________
 list of implemented opcodes:
 prt /print text
 crm /clears memory
-
+&   /set opmode to blank(default)
 wip opcodes:
-add /add 2 numbers
+acm /assign a value to a specific address in memory, ex acm,15(address), 1(value to assign)
+str /set print mode to string
+add /add 2 1 digit numbers
 
 unimplemented opcodes:
-
 sub /substract 2 numbers
 div /divide 2 numbers
 int /create a variable 
@@ -20,11 +21,11 @@ del /clear a variable
 if  /self explanatory
 inc /add 1 to a variable
 dec /substract 1 to a variable
-acm / assign a value to a specific address in memory, ex acm,15(address), 1(value to assign)
 prm / print a specific memory address
 _____________________________________________________________
 list of features to implement:
 memory 
+user input
 _____________________________________________________________
 programs:
 add,2,3
@@ -39,7 +40,7 @@ prt,hello\\,prt,h\\,prt,why,prt,not
 
 using namespace std;
 
-string program = "prt,hello\\,prt,hi\\,prt,w\\";
+string program = "add,23,prt,/,&";
 string curop;
 string opcode;
 
@@ -55,5 +56,6 @@ int main(){
             curop = "";
         }
     }
-    
+
+   
 }
